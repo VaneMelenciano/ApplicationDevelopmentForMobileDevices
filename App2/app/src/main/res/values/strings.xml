@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PM_VML_02</string>
+    <string name="titulo">Calculadora de factorial</string>
+    <string name="factorial">Factorial</string>
+    <string name="terminar">Terminar la aplicacion</string>
+    <string name="numero">Digite un numero</string>
+    <string name="resultado">Resultado</string>
+</resources>
+

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PM_VML_07</string>
+    <string name="get">Solicitud usando GET</string>
+    <string name="post">Solicitud usando POST</string>
+</resources>

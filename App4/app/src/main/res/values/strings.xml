@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PM_VML_04</string>
+    <string name="num">18</string>
+    <string name="suma1">18+20</string>
+    <string name="suma2">18+10</string>
+    <string name="suma3">30+50</string>
+    <string name="suma4">15+30</string>
+    <string name="resultado">Sin Calcular</string>
+    <string name="nuevo">Nuevo</string>
+</resources>
+

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PM_VML_05</string>
+    <string name="act2">Actividad 2</string>
+    <string name="act3">Actividad 3</string>
+    <string name="act4">Actividad 4</string>
+    <string name="act5">Actividad 5</string>
+
+    <string name="nombre">Digite un nombre</string>
+    <string name="regresar">Regresar</string>
+</resources>
