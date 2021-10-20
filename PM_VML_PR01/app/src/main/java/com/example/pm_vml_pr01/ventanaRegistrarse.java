@@ -11,21 +11,17 @@ import android.widget.Toast;
 
 public class ventanaRegistrarse extends AppCompatActivity {
 
-    boolean checked = false;
+    private CheckBox checked;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_registrarse);
 
-        Intent i = getIntent();
+        //Intent i = getIntent();
         //String correoo = i.getStringExtra("correo");
-        Toast.makeText(this, "HOLA",Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "HOLA",Toast.LENGTH_LONG).show();
 
 
-    }
-    public void checkT(View view) {
-        boolean checkedT = ((CheckBox) view).isChecked();
-        if(checkedT) checked = true;
     }
     public void goInicio(View view) {
         /*Intent i1 = new Intent(this, ventanaInicio.class);
@@ -34,13 +30,14 @@ public class ventanaRegistrarse extends AppCompatActivity {
         i1.putExtra("contra", contra);
         i1.putExtra("nombre", nombre);
         startActivity(i1);*/
+        checked = (CheckBox) findViewById(R.id.checkTerminos);
+        if(checked.isChecked()) Toast.makeText(this, "Bien",Toast.LENGTH_LONG).show(); //está seleccionado
+        else Toast.makeText(this, "Mal",Toast.LENGTH_LONG).show(); // no está seleccionado
     }
 
     public void goIngresar(View view) {
         Intent i1 = new Intent(this, MainActivity.class);
         //EditText etMensaje1 = findViewById(R.id.correo);
-        if(checked) i1.putExtra("check", "true");
-        else i1.putExtra("check", "false");
         startActivity(i1);
     }
 }

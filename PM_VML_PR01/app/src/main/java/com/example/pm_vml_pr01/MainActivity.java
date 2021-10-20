@@ -15,9 +15,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent i = getIntent();
-        String c = i.getStringExtra("check");
-        Toast.makeText(this, c,Toast.LENGTH_LONG).show();
     }
 
     public void goInicio(View view) {
