@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PM_VML_PR01</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="ingresar2">¡Hola! Qué gusto verte de nuevo</string>
+    <string name="email">Email</string>
+    <string name="nombre">Nombre</string>
+    <string name="con">Contraseña</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="emailEjemplo">ejemplo@gmail.com</string>
+    <string name="digiteNom">Digite su nombre</string>
+    <string name="digiteCor">Su dirección de correo electrónico</string>
+    <string name="digiteCon">Digite una contraseña</string>
+    <string name="cuenta">¿Tienes una cuenta?</string>
+    <string name="terminos">Términos de Servicio</string>
+    <string name="politica">Políticas de Privacidad</string>
+</resources>
