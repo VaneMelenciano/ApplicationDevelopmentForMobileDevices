@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">PM_VML_EXAMEN_1</string>
+    <string name="consulta">Consulta</string>
+    <string name="consultaTxt">Consulta de Mascota</string>
+    <string name="alta">Alta</string>
+    <string name="salir">Salir</string>
+    <string name="continuar">Continuar</string>
+    <string name="regresar">Regresar</string>
+    <string name="agregar">Agregar</string>
+    <string name="digiteId">Digite un id de Mascota</string>
+
+    <string name="idC">Id Cliente</string>
+    <string name="alias">Alias</string>
+    <string name="especie">Especie</string>
+    <string name="raza">Raza</string>
+    <string name="color">Color</string>
+    <string name="fNac">Fecha de Nacimiento</string>
+
+    <string name="DidC">Digite un id de cliente</string>
+    <string name="Dalias">Digite un alias de Mascota</string>
+    <string name="Despecie">Digite una especie de Mascota</string>
+    <string name="Draza">Digite una raza de Mascota</string>
+    <string name="Dcolor">Digite un color de Mascota</string>
+    <string name="DfNac">Digite una fecha (aaa-mm-dd)</string>
+
+
+</resources>
