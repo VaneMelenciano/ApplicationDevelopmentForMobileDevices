@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class ventanaRegistrarse extends AppCompatActivity {
 
 
     }
-    public void goInicio(View view) {
+    public void goRegistrarse(View view) {
         /*Intent i1 = new Intent(this, ventanaInicio.class);
         EditText correo = findViewById(R.id.correo), contra = findViewById(R.id.contra), nombre = findViewById(R.id.nombre);
         i1.putExtra("corre", correo);
@@ -44,25 +45,33 @@ public class ventanaRegistrarse extends AppCompatActivity {
         i1.putExtra("nombre", nombre);
         startActivity(i1);*/
         checked = (CheckBox) findViewById(R.id.checkTerminos);
-        if(checked.isChecked()){
-            Toast.makeText(this, "Bien",Toast.LENGTH_LONG).show(); //está seleccionado
+        if(checked.isChecked()){ //si aceptó terminos
+            //Intent i1 = new Intent(this, ventanaInicio.class);
+            //Toast.makeText(this, "HOLA",Toast.LENGTH_LONG).show();
+            //startActivity(i1);
+            //Toast.makeText(this, "Bien",Toast.LENGTH_LONG).show(); //está seleccionado
             //agregar registro
-            JSONObject mascotaJSON = new JSONObject();
+            EditText correo = (EditText)findViewById(R.id.correo), contra = findViewById(R.id.contra);
+            EditText nombre = (EditText)findViewById(R.id.correo);
+            //String nombre1 = nombre.toString();
+            //Editable correo11 = correo.getText(), nombre1 = nombre.
+            //String contra1=contra.toString();
+            JSONObject clienteJSON = new JSONObject();
             try {
-                mascotaJSON.put("nombre", findViewById(R.id.nombre));
-                mascotaJSON.put("correo", findViewById(R.id.correo));
-                mascotaJSON.put("contrasenia", findViewById(R.id.contra));
+                clienteJSON.put("nombre", nombre.getText());
+                clienteJSON.put("correo", correo.getText());
+                clienteJSON.put("contrasenia", contra.getText());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            String urlLocal = "http://192.168.0.4/Moviles/Practica1/cliente.php";
-            String url = "http://vanemelenciano.byethost9.com/Practica1/cliente.php";
+            String url = "https://vanemelenciano11.000webhostapp.com/Practica1/cliente.php";
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST, url, mascotaJSON, new Response.Listener<JSONObject>() {
+                    (Request.Method.POST, url, clienteJSON, new Response.Listener<JSONObject>() {
 
                         @Override
                         public void onResponse(JSONObject respuesta) {
                             Toast.makeText(getApplicationContext(), "Respuesta del servidor:  " + respuesta, Toast.LENGTH_LONG).show();
+                            mandarDatos(String.valueOf(nombre.getText()), String.valueOf(correo.getText()));
                         }
                     }, new Response.ErrorListener() {
 
@@ -75,12 +84,18 @@ public class ventanaRegistrarse extends AppCompatActivity {
             colaSolicitudes.add(jsonObjectRequest);
 
         }
-        else{
-            Toast.makeText(this, "Mal",Toast.LENGTH_LONG).show(); // no está seleccionado
+        else {
+            Toast.makeText(this, "Mal", Toast.LENGTH_LONG).show(); // no está seleccionado
         }
     }
+    public void mandarDatos(String nombre, String correo){
+        Intent i1 = new Intent(this, ventanaInicio.class);
+        i1.putExtra("nombre", nombre);
+        i1.putExtra("correo", correo);
+        startActivity(i1);
+    }
 
-    public void goIngresar(View view) {
+    public void goVentanaIngresar(View view) {
         Intent i1 = new Intent(this, MainActivity.class);
         //EditText etMensaje1 = findViewById(R.id.correo);
         startActivity(i1);

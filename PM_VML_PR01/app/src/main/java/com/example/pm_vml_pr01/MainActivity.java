@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,15 +30,24 @@ public class MainActivity extends AppCompatActivity {
         colaSolicitudes = Volley.newRequestQueue(this);
     }
 
-    public void goInicio(View view) {
+    public void goIngrear(View view) {
+        //Intent i1 = new Intent(this, ventanaInicio.class);
+        //Intent i1 = new Intent(this, ventanaInicio.class);
+        //Toast.makeText(this, "HOLA",Toast.LENGTH_LONG).show();
+        //startActivity(i1);
         /*Intent i1 = new Intent(this, ventanaInicio.class);
         EditText correo = findViewById(R.id.correo), contra = findViewById(R.id.contra);
         i1.putExtra("corre", correo);
         i1.putExtra("contra", contra);
         startActivity(i1);*/
+
         //Verificar que el usuario exista
-        /*String urlLocal = "http://192.168.0.4/Moviles/Practica1/cliente.php?accion=read";
-        String url = "http://vanemelenciano.byethost9.com/Practica1/cliente.php?accion=read";
+
+        EditText correo = (EditText)findViewById(R.id.correo), contra = findViewById(R.id.contra);
+        String url = "https://vanemelenciano11.000webhostapp.com/Practica1/cliente.php";
+        String usuario = "?correo=\"" + correo.getText() + "\"";
+        url+=usuario;
+        //Toast.makeText(this, url,Toast.LENGTH_LONG).show();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() { //GET para obtener recursos
 
@@ -48,20 +58,24 @@ public class MainActivity extends AppCompatActivity {
                             int estado = respuesta.getInt("estado");
                             String mensaje = respuesta.getString("mensaje");
 
-                            if(estado==1){ //si hay registros
-                                JSONArray clientes =  respuesta.getJSONArray("clientes");
+                            if(estado==1){ //si hay registros, el correo existe
+                                String contrasenia = respuesta.getString("contrasenia");
+                                String contra1 = String.valueOf(contra.getText());
 
-                                for(int i=0; i< clientes.length(); i++){
-                                    JSONObject cliente = clientes.getJSONObject(i);
-                                    Toast.makeText(getApplicationContext(), cliente.getString("nombre"), Toast.LENGTH_LONG).show();
+                                if(contra1.equals(contrasenia)){ //contraseña correcta
+                                    Toast.makeText(getApplicationContext(), "Contraseña correcta", Toast.LENGTH_LONG).show();
+                                    //si es correcta
+                                    String correo1= respuesta.getString("correo"), nombre=respuesta.getString("nombre");
+                                    mandarDatos(nombre, correo1);
+                                }else{ //contraseña incorrecta
+                                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta: " + contrasenia + " " + contra1, Toast.LENGTH_LONG).show();
                                 }
-                            }else{
+                            }else{ //no existe el registro
                                 Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        //Toast.makeText(getApplicationContext(), "Todo un exito la solicitud", Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
 
@@ -71,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Existe el siguiente error: " + error.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
-        colaSolicitudes.add(jsonObjectRequest);*/
-        String url = "http://vanemelenciano.byethost9.com/Practica1/cliente.php";
+        colaSolicitudes.add(jsonObjectRequest);
+        /*String url = "http://vanemelenciano.byethost9.com/Practica1/cliente.php";
         String urlLocal = "http://192.168.0.4/Moviles/diagnostico/php/CRUD-mascota.php?accion=read";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() { //GET para obtener recursos
@@ -107,10 +121,18 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Existe el siguiente error: " + error.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
-        colaSolicitudes.add(jsonObjectRequest);
+        colaSolicitudes.add(jsonObjectRequest)*/
+
     }
 
-    public void goRegistrarse(View view) {
+    public void mandarDatos(String nombre, String correo){
+        Intent i1 = new Intent(this, ventanaInicio.class);
+        i1.putExtra("nombre", nombre);
+        i1.putExtra("correo", correo);
+        startActivity(i1);
+    }
+
+    public void goVentanaRegistrarse(View view) {
         Intent i1 = new Intent(this, ventanaRegistrarse.class);
         //EditText etMensaje1 = findViewById(R.id.correo);
         startActivity(i1);
