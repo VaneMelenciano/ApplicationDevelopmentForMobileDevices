@@ -36,10 +36,6 @@ public class ventanaConsulta extends AppCompatActivity {
     }
 
     public void goConsultar(View view) {
-        /*Intent i1 = new Intent(this, ventanaMConsulta.class);
-        i1.putExtra("id", id);
-        Toast.makeText(this, id,Toast.LENGTH_LONG).show();
-        startActivity(i1);*/
         progressDialog.show();
         EditText id1 = (EditText)findViewById(R.id.id);
 
@@ -68,7 +64,7 @@ public class ventanaConsulta extends AppCompatActivity {
                                     String raza = respuesta.getString("raza");
                                     String color = respuesta.getString("color");
                                     String fNac = respuesta.getString("fecha_nacimiento");
-                                    //MOSTAR LOS DATOS EN LA VENTANA MCONSULTA
+                                    //MANDAR LOS DATOS EN LA VENTANA MCONSULTA
                                     Intent i1 = new Intent(getApplicationContext(), ventanaMConsulta.class);
                                     i1.putExtra("idCliente", idCliente);
                                     i1.putExtra("alias", alias);

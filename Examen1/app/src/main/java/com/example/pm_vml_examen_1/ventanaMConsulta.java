@@ -38,23 +38,14 @@ public class ventanaMConsulta extends AppCompatActivity {
         String raza = i.getStringExtra("raza");
         String color = i.getStringExtra("color");
         String fNac = i.getStringExtra("fNac");
-        //String id1 = i.getStringExtra("id");
-        //int id = Integer.parseInt(id1);
-        //Toast.makeText(this, id1,Toast.LENGTH_LONG).show();
-        //consultarMascota(id1);
-
-        //decarar textview
+        //declarar textview
         TextView idC1 = findViewById(R.id.idC);
         TextView alias1 = findViewById(R.id.alias);
         TextView especie1 = findViewById(R.id.especie);
         TextView raza1 = findViewById(R.id.raza);
         TextView color1 = findViewById(R.id.color);
         TextView fnac1 = findViewById(R.id.fnac);
-
-        /*SpannableString mitextoU = new SpannableString("Mamut chiquito");
-        mitextoU.setSpan(new UnderlineSpan(), 0, mitextoU.length(), 0);
-        idC1.setText(mitextoU);*/
-
+        //mandar datos a los textview
         idC1.setText(idC);
         alias1.setText(alias);
         especie1.setText(especie);
