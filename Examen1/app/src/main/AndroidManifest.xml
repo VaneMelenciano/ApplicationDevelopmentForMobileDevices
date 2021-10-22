@@ -14,15 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PM_VML_EXAMEN_1">
         <activity
+            android:screenOrientation="portrait"
             android:name=".ventanaAlta"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ventanaMConsulta"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ventanaConsulta"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
