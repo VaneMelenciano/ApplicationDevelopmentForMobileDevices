@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -25,10 +26,23 @@ private ActivityVentanaInicialBinding binding;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
-        //String correo = i.getStringExtra("correo");
-        //String nombre = i.getStringExtra("nombre");
-        //Toast.makeText(this, nombre + "  " + correo,Toast.LENGTH_LONG).show();
-        Toast.makeText(this, "HOLA",Toast.LENGTH_LONG).show();
+        //Recibir datos
+        String correo = i.getStringExtra("correo");
+        String nombre = i.getStringExtra("nombre");
+        Toast.makeText(this, nombre + "  " + correo,Toast.LENGTH_LONG).show();
+
+        //declarar textview
+        TextView nombre1 = findViewById(R.id.mostrarNombre);
+        TextView correo1 = findViewById(R.id.mostrarCorreo);
+        TextView t = findViewById(R.id.textView3);
+
+        //mandar datos a los textview
+        //nombre1.setText(nombre);
+        //correo1.setText(correo);
+        //t.setText("holaaaa");
+
+
+        //Toast.makeText(this, "HOLA",Toast.LENGTH_LONG).show();
      binding = ActivityVentanaInicialBinding.inflate(getLayoutInflater());
      setContentView(binding.getRoot());
 

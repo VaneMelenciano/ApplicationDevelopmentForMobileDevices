@@ -35,49 +35,52 @@ public class MainActivity extends AppCompatActivity {
 
     public void goIngresar(View view) {
         EditText correo = (EditText)findViewById(R.id.correo), contra = findViewById(R.id.contra);
-        String url = "https://vanemelenciano11.000webhostapp.com/Practica1/cliente.php";
-        String usuario = "?correo=\"" + correo.getText() + "\"";
-        url+=usuario;
-        //Toast.makeText(this, url,Toast.LENGTH_LONG).show();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() { //GET para obtener recursos
+        if(correo.getText().toString().isEmpty() || contra.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Falta llenar campos", Toast.LENGTH_LONG).show();
+        }else {
+            String url = "https://vanemelenciano11.000webhostapp.com/Practica1/cliente.php";
+            String usuario = "?correo=\"" + correo.getText() + "\"";
+            url += usuario;
+            //Toast.makeText(this, url,Toast.LENGTH_LONG).show();
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() { //GET para obtener recursos
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        JSONObject respuesta = response;
-                        try {
-                            int estado = respuesta.getInt("estado");
-                            String mensaje = respuesta.getString("mensaje");
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            JSONObject respuesta = response;
+                            try {
+                                int estado = respuesta.getInt("estado");
+                                String mensaje = respuesta.getString("mensaje");
 
-                            if(estado==1){ //si hay registros, el correo existe
-                                String contrasenia = respuesta.getString("contrasenia");
-                                String contra1 = String.valueOf(contra.getText());
+                                if (estado == 1) { //si hay registros, el correo existe
+                                    String contrasenia = respuesta.getString("contrasenia");
+                                    String contra1 = String.valueOf(contra.getText());
 
-                                if(contra1.equals(contrasenia)){ //contraseña correcta
-                                    Toast.makeText(getApplicationContext(), "Contraseña correcta", Toast.LENGTH_LONG).show();
-                                    //si es correcta
-                                    String correo1= respuesta.getString("correo"), nombre=respuesta.getString("nombre");
-                                    mandarDatos(nombre, correo1);
-                                }else{ //contraseña incorrecta
-                                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta: " + contrasenia + " " + contra1, Toast.LENGTH_LONG).show();
+                                    if (contra1.equals(contrasenia)) { //contraseña correcta
+                                        Toast.makeText(getApplicationContext(), "Contraseña correcta", Toast.LENGTH_LONG).show();
+                                        //si es correcta
+                                        String correo1 = respuesta.getString("correo"), nombre = respuesta.getString("nombre");
+                                        mandarDatos(nombre, correo1);
+                                    } else { //contraseña incorrecta
+                                        Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                                    }
+                                } else { //no existe el registro
+                                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
                                 }
-                            }else{ //no existe el registro
-                                Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                }, new Response.ErrorListener() {
+                    }, new Response.ErrorListener() {
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        Toast.makeText(getApplicationContext(), "Existe el siguiente error: " + error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                });
-        colaSolicitudes.add(jsonObjectRequest);
-
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // TODO: Handle error
+                            Toast.makeText(getApplicationContext(), "Existe el siguiente error: " + error.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+            colaSolicitudes.add(jsonObjectRequest);
+        }
     }
     public void mandarDatos(String nombre, String correo){
         Intent i1 = new Intent(this, ventanaInicial.class);

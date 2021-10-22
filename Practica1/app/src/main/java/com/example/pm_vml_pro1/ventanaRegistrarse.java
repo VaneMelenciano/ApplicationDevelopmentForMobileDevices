@@ -34,14 +34,14 @@ public class ventanaRegistrarse extends AppCompatActivity {
 
     public void goRegistrarse(View view) {
         checked = (CheckBox) findViewById(R.id.checkTerminos);
-        if(checked.isChecked()) { //si aceptó terminos
-            //agregar registro
-            EditText correo = (EditText) findViewById(R.id.correo), contra = findViewById(R.id.contra);
-            EditText nombre = (EditText) findViewById(R.id.correo);
-            verificarCorreoUnico(correo, nombre, contra);
-        }
-        else {
+        EditText correo = (EditText) findViewById(R.id.correo), contra = findViewById(R.id.contra);
+        EditText nombre = (EditText) findViewById(R.id.correo);
+        if(correo.getText().toString().isEmpty() || contra.getText().toString().isEmpty() || nombre.getText().toString().isEmpty()){
+            Toast.makeText(this, "Falta llenar campos", Toast.LENGTH_LONG).show();
+        }else if(!checked.isChecked()){ //todos los campos estan llenos, pero no acepto terminos
             Toast.makeText(this, "Aceptar terminos", Toast.LENGTH_LONG).show(); // no está seleccionado
+        }else{ //todo está bien
+            verificarCorreoUnico(correo, nombre, contra);
         }
     }
     public void verificarCorreoUnico(EditText correo, EditText nombre, EditText contra){
@@ -60,7 +60,7 @@ public class ventanaRegistrarse extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "El correo ya está registrado", Toast.LENGTH_LONG).show();
 
                             }else{ //no existe el correo, lo agrega
-                                Toast.makeText(getApplicationContext(), "No Existe", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "No Existe ese correo", Toast.LENGTH_LONG).show();
                                 JSONObject clienteJSON = new JSONObject();
                                 try {
                                     clienteJSON.put("nombre", nombre.getText());
