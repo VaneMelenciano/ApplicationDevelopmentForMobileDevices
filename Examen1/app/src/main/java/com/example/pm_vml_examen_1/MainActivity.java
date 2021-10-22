@@ -23,4 +23,11 @@ public class MainActivity extends AppCompatActivity {
         Intent i1 = new Intent(this, ventanaAlta.class);
         startActivity(i1);
     }
+
+    public void salir(View view) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

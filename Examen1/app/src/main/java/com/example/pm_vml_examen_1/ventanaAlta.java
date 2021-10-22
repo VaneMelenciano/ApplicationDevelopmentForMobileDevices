@@ -50,8 +50,25 @@ public class ventanaAlta extends AppCompatActivity {
                 (Request.Method.POST, url, mascotaJSON, new Response.Listener<JSONObject>() {
 
                     @Override
-                    public void onResponse(JSONObject respuesta) {
-                        Toast.makeText(getApplicationContext(), "Respuesta del servidor:  " + respuesta, Toast.LENGTH_LONG).show();
+                    public void onResponse(JSONObject respuesta1) {
+                        JSONObject respuesta = respuesta1;
+                        try {
+                            int estado = respuesta.getInt("estado");
+                            String mensaje = respuesta.getString("mensaje");
+
+                            if(estado==1){ //el registro se creó
+                                Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+
+                            }else{ //hubo un error //"Ocurrio un error desconocido"
+                                if(mensaje.equals("Ocurrio un error desconocido")){
+                                    Toast.makeText(getApplicationContext(), "Por favor ponga la fecha con el formato indicado: aaa-mm-dd", Toast.LENGTH_LONG).show();
+                                }else{ //Faltan parametros
+                                    Toast.makeText(getApplicationContext(), "Por favor llene todos los campos", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
 

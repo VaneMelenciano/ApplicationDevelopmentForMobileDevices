@@ -48,6 +48,7 @@
         android:backgroundTint="@color/rosaPrincipal"
         android:text="@string/salir"
         android:textAllCaps="false"
+        android:onClick="salir"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

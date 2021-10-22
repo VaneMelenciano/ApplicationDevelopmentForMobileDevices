@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,6 +50,10 @@ public class ventanaMConsulta extends AppCompatActivity {
         TextView raza1 = findViewById(R.id.raza);
         TextView color1 = findViewById(R.id.color);
         TextView fnac1 = findViewById(R.id.fnac);
+
+        /*SpannableString mitextoU = new SpannableString("Mamut chiquito");
+        mitextoU.setSpan(new UnderlineSpan(), 0, mitextoU.length(), 0);
+        idC1.setText(mitextoU);*/
 
         idC1.setText(idC);
         alias1.setText(alias);

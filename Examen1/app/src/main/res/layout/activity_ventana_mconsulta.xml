@@ -40,7 +40,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.135"
+        style="?android:listSeparatorTextViewStyle"
         tools:ignore="TouchTargetSizeCheck" />
+
+
 
     <TextView
         android:id="@+id/txtAlias"
@@ -68,6 +71,7 @@
         android:textAllCaps="false"
         android:textColor="#686767"
         android:textColorLink="#F85F6A"
+        style="?android:listSeparatorTextViewStyle"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,6 +106,7 @@
         android:singleLine="false"
         android:textAllCaps="false"
         android:textColor="#686767"
+        style="?android:listSeparatorTextViewStyle"
         android:textColorLink="#F85F6A"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,6 +143,7 @@
         android:textAllCaps="false"
         android:textColor="#686767"
         android:textColorLink="#F85F6A"
+        style="?android:listSeparatorTextViewStyle"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,6 +174,7 @@
         android:ems="10"
         android:text="@string/color"
         android:selectAllOnFocus="false"
+        style="?android:listSeparatorTextViewStyle"
         android:singleLine="false"
         android:textAllCaps="false"
         android:textColor="#686767"
@@ -204,6 +211,7 @@
         android:text="@string/fNac"
         android:selectAllOnFocus="false"
         android:singleLine="false"
+        style="?android:listSeparatorTextViewStyle"
         android:textAllCaps="false"
         android:textColor="#686767"
         android:textColorLink="#F85F6A"
