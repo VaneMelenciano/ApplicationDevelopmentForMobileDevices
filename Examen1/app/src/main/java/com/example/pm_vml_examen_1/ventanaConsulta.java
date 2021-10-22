@@ -2,6 +2,7 @@ package com.example.pm_vml_examen_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,12 +23,16 @@ import org.json.JSONObject;
 public class ventanaConsulta extends AppCompatActivity {
 
     RequestQueue colaSolicitudes;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_consulta);
         colaSolicitudes = Volley.newRequestQueue(this);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Macota");
+        progressDialog.setMessage("Buscando....");
     }
 
     public void goConsultar(View view) {
@@ -35,10 +40,11 @@ public class ventanaConsulta extends AppCompatActivity {
         i1.putExtra("id", id);
         Toast.makeText(this, id,Toast.LENGTH_LONG).show();
         startActivity(i1);*/
-
+        progressDialog.show();
         EditText id1 = (EditText)findViewById(R.id.id);
 
         if(id1.getText().toString().isEmpty()){
+            progressDialog.dismiss();
             Toast.makeText(getApplicationContext(), "Por favor escriba un Id de una Mascota", Toast.LENGTH_LONG).show();
         }
         else {
@@ -70,9 +76,11 @@ public class ventanaConsulta extends AppCompatActivity {
                                     i1.putExtra("raza", raza);
                                     i1.putExtra("color", color);
                                     i1.putExtra("fNac", fNac);
+                                    progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Registro encontrado", Toast.LENGTH_LONG).show();
                                     startActivity(i1);
                                 } else { //no existe el registro
+                                    progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "No existe mascota con ese id", Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
@@ -84,6 +92,7 @@ public class ventanaConsulta extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
+                            progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Existe el siguiente error: " + error.toString(), Toast.LENGTH_LONG).show();
                         }
                     });

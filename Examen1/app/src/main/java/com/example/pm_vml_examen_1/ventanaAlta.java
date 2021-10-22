@@ -2,6 +2,7 @@ package com.example.pm_vml_examen_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,15 +21,23 @@ import org.json.JSONObject;
 
 public class ventanaAlta extends AppCompatActivity {
     RequestQueue colaSolicitudes;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_alta);
         colaSolicitudes = Volley.newRequestQueue(this);
+
+        colaSolicitudes = Volley.newRequestQueue(this);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Macotas");
+        progressDialog.setMessage("Conectando....");
     }
 
     public void goAgregar(View view) {
+        progressDialog.show();
         //guardar datos agregardor
         EditText idC = (EditText) findViewById(R.id.idC), alias = (EditText) findViewById(R.id.alias);
         EditText especie = (EditText) findViewById(R.id.especie), raza = (EditText) findViewById(R.id.raza);
@@ -57,12 +66,15 @@ public class ventanaAlta extends AppCompatActivity {
                             String mensaje = respuesta.getString("mensaje");
 
                             if(estado==1){ //el registro se creó
+                                progressDialog.dismiss();
                                 Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
 
                             }else{ //hubo un error //"Ocurrio un error desconocido"
                                 if(mensaje.equals("Ocurrio un error desconocido")){
+                                    progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Por favor ponga la fecha con el formato indicado: aaa-mm-dd", Toast.LENGTH_LONG).show();
                                 }else{ //Faltan parametros
+                                    progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Por favor llene todos los campos", Toast.LENGTH_LONG).show();
                                 }
                             }
