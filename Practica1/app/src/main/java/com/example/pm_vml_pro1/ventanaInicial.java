@@ -19,6 +19,10 @@ import com.example.pm_vml_pro1.databinding.ActivityVentanaInicialBinding;
 
 public class ventanaInicial extends AppCompatActivity {
 
+    TextView nombre1;
+    TextView correo1;
+    String correo;
+    String nombre;
     private AppBarConfiguration mAppBarConfiguration;
 private ActivityVentanaInicialBinding binding;
 
@@ -27,14 +31,13 @@ private ActivityVentanaInicialBinding binding;
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
         //Recibir datos
-        String correo = i.getStringExtra("correo");
-        String nombre = i.getStringExtra("nombre");
+        correo = i.getStringExtra("correo");
+        nombre = i.getStringExtra("nombre");
         Toast.makeText(this, nombre + "  " + correo,Toast.LENGTH_LONG).show();
 
         //declarar textview
-        TextView nombre1 = findViewById(R.id.mostrarNombre);
-        TextView correo1 = findViewById(R.id.mostrarCorreo);
-        TextView t = findViewById(R.id.textView3);
+        nombre1 = findViewById(R.id.mostrarNombre);
+        correo1 = findViewById(R.id.mostrarCorreo);
 
         //mandar datos a los textview
         //nombre1.setText(nombre);

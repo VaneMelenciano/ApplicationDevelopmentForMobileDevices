@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void mandarDatos(String nombre, String correo){
         Intent i1 = new Intent(this, ventanaInicial.class);
-        //i1.putExtra("nombre", nombre);
-        //i1.putExtra("correo", correo);
+        i1.putExtra("nombre", nombre);
+        i1.putExtra("correo", correo);
         startActivity(i1);
     }
 }

@@ -17,11 +17,11 @@
             android:icon="@mipmap/clientes"
             android:title="@string/clientes" />
         <item
-            android:id="@+id/guias"
+            android:id="@+id/nav_guias"
             android:icon="@mipmap/corazon"
             android:title="@string/guias" />
         <item
-            android:id="@+id/productos"
+            android:id="@+id/nav_productos"
             android:icon="@mipmap/producto"
             android:title="@string/productos" />
     </group>
