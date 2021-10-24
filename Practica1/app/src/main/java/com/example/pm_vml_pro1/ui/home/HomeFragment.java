@@ -30,7 +30,7 @@ private FragmentHomeBinding binding;
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                textView.setText("HOLAA");
             }
         });
         return root;

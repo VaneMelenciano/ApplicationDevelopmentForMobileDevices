@@ -49,7 +49,9 @@ private ActivityVentanaInicialBinding binding;
      binding = ActivityVentanaInicialBinding.inflate(getLayoutInflater());
      setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarVentanaInicial.toolbar);
+     setSupportActionBar(binding.appBarVentanaInicial.toolbar);
+
+
         //btn de mensajes que borré
         /*binding.appBarVentanaInicial.fab.setOnClickListener(new View.OnClickListener() {
             @Override

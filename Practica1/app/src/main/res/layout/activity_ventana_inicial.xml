@@ -26,5 +26,24 @@
         app:headerLayout="@layout/nav_header_ventana_inicial"
         app:itemIconTint="#B3B5B5"
         app:itemTextColor="@color/black"
-        app:menu="@menu/activity_ventana_inicial_drawer" />
+        app:menu="@menu/activity_ventana_inicial_drawer"
+>
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:icon="@mipmap/clientes"
+            >
+            <TextView
+                android:id="@+id/condiguracion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="@string/configuracion"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>-->
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -25,4 +25,5 @@
             android:icon="@mipmap/producto"
             android:title="@string/productos" />
     </group>
+
 </menu>

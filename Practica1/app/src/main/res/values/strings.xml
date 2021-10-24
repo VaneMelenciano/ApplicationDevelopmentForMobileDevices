@@ -31,6 +31,8 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="mostrarCorreo">correo</string>
     <string name="mostrarNombre">nombre</string>
+    <string name="configuracion">Configuración</string>
+    <string name="listado">Listado de Macotas</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">Hello blank fragment</string>
 </resources>
