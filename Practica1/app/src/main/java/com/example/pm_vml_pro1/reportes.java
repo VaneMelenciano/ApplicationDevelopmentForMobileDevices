@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class reportes extends AppCompatActivity {
     private ListView list;
     private ArrayList<String> mascotasServidor;
-    //private ArrayList<Integer> mascotasID;
+    private ArrayList<String> mascotasID;
     RequestQueue colaSolicitudes;
     ProgressDialog progressDialog;
     JSONArray mascotas;
@@ -40,7 +40,7 @@ public class reportes extends AppCompatActivity {
         list = (ListView) findViewById(R.id.listaMascotas);
         //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_LONG).show();
         mascotasServidor = new ArrayList();
-        //mascotasID = new ArrayList();
+        mascotasID = new ArrayList();
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Macotas");
         progressDialog.setMessage("Conectando....");
@@ -74,7 +74,7 @@ public class reportes extends AppCompatActivity {
                                     //Toast.makeText(getApplicationContext(),"rrr", Toast.LENGTH_LONG).show();
 
                                     mascotasServidor.add(mascota.getString("alias"));
-                                    //mascotasID.add(Integer.valueOf(mascota.getString("id")));
+                                    mascotasID.add(mascota.getString("id"));
                                     //Toast.makeText(getApplicationContext(), mascota.getString("alias"), Toast.LENGTH_LONG).show();
                                 }
                                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, mascotasServidor);
@@ -102,13 +102,13 @@ public class reportes extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                //int idM = mascotasID.get(position);
+                String idM = mascotasID.get(position);
                 //Toast.makeText(reportes.this, "Has pulsado: "+ mascotasServidor.get(position) + "   " + position+"   " +idM, Toast.LENGTH_LONG).show();
 
                 try {
                     JSONObject mascota = mascotas.getJSONObject(position);
-                    //Toast.makeText(reportes.this, mascota.getString("alias") + mascota.getString("especie"), Toast.LENGTH_LONG).show();
-                    goDetalle(mascota.getString("alias"), mascota.getString("especie"));
+                    //Toast.makeText(reportes.this, idM + " " + mascota.getString("alias") + mascota.getString("especie"), Toast.LENGTH_LONG).show();
+                    goDetalle(mascota.getString("alias"), mascota.getString("especie"), idM);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -116,11 +116,12 @@ public class reportes extends AppCompatActivity {
         });
     }
 
-    public void goDetalle(String alias, String especie){
+    public void goDetalle(String alias, String especie, String idM){
         //Toast.makeText(reportes.this, alias + "  " + especie , Toast.LENGTH_LONG).show();
         Intent i1 = new Intent(this, detalles.class);
         i1.putExtra("alias", alias);
         i1.putExtra("especie", especie);
+        i1.putExtra("idM", idM);
         //i1.putExtra("raza", raza);
         startActivity(i1);
     }
