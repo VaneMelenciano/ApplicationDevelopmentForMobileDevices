@@ -48,6 +48,8 @@ public class reportes extends AppCompatActivity {
 
     }
 
+    @Override public void onBackPressed() { }
+
     private void getGet(){
         //progressDialog.show();
         String url = "http://148.204.142.251/isc/api/v1/mascota.php?accion=read";

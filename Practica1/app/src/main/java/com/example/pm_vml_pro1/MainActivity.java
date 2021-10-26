@@ -88,4 +88,5 @@ public class MainActivity extends AppCompatActivity {
         i1.putExtra("correo", correo);
         startActivity(i1);
     }
+    @Override public void onBackPressed() { }
 }

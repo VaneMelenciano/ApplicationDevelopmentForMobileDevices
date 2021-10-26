@@ -35,4 +35,5 @@ public class detalles extends AppCompatActivity {
         Intent i1 = new Intent(this, reportes.class);
         startActivity(i1);
     }
+    @Override public void onBackPressed() { }
 }

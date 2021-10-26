@@ -116,4 +116,5 @@ public class ventanaRegistrarse extends AppCompatActivity {
         //EditText etMensaje1 = findViewById(R.id.correo);
         startActivity(i1);
     }
+    @Override public void onBackPressed() { }
 }

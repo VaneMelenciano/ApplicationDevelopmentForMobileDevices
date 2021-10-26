@@ -80,4 +80,5 @@ private ActivityVentanaInicialBinding binding;
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+    @Override public void onBackPressed() { }
 }
