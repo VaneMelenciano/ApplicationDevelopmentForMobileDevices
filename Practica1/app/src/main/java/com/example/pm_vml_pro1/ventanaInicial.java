@@ -1,6 +1,7 @@
 package com.example.pm_vml_pro1;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -19,10 +20,6 @@ import com.example.pm_vml_pro1.databinding.ActivityVentanaInicialBinding;
 
 public class ventanaInicial extends AppCompatActivity {
 
-    TextView nombre1;
-    TextView correo1;
-    String correo;
-    String nombre;
     private AppBarConfiguration mAppBarConfiguration;
 private ActivityVentanaInicialBinding binding;
 
@@ -31,18 +28,8 @@ private ActivityVentanaInicialBinding binding;
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
         //Recibir datos
-        correo = i.getStringExtra("correo");
-        nombre = i.getStringExtra("nombre");
-        Toast.makeText(this, nombre + "  " + correo,Toast.LENGTH_LONG).show();
-
-        //declarar textview
-        nombre1 = findViewById(R.id.mostrarNombre);
-        correo1 = findViewById(R.id.mostrarCorreo);
-
-        //mandar datos a los textview
-        //nombre1.setText(nombre);
-        //correo1.setText(correo);
-        //t.setText("holaaaa");
+        String correo1 = i.getStringExtra("correo");
+        String nombre1 = i.getStringExtra("nombre");
 
 
         //Toast.makeText(this, "HOLA",Toast.LENGTH_LONG).show();
@@ -69,6 +56,13 @@ private ActivityVentanaInicialBinding binding;
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_ventana_inicial);
+        //mandar correo y nombre del usuario a la aplicacion
+        View hView = navigationView.getHeaderView(0);
+        TextView correo = (TextView) hView.findViewById(R.id.mostrarCorreo);
+        correo.setText(correo1);
+        TextView nombre = (TextView) hView.findViewById(R.id.mostrarNombre);
+        nombre.setText(nombre1);
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }

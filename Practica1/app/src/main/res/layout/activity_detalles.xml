@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".detalles">
+
+    <TextView
+        android:id="@+id/detalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalle"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
+
+
+    <TextView
+        android:id="@+id/txtAlias"
+        android:layout_width="113dp"
+        android:layout_height="18dp"
+        android:text="@string/alias"
+        android:textColor="@color/rosaPrincipal"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159" />
+
+    <TextView
+        android:id="@+id/alias"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="288dp"
+        android:layout_height="44dp"
+        android:backgroundTint="#B5B3B3"
+        android:ems="10"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:text="@string/alias"
+        android:textAllCaps="false"
+        android:textColor="#686767"
+        android:textColorLink="#F85F6A"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.221"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/txtEspecie"
+        android:layout_width="113dp"
+        android:layout_height="18dp"
+        android:text="@string/especie"
+        android:textColor="@color/rosaPrincipal"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314" />
+
+    <TextView
+        android:id="@+id/especie"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="288dp"
+        android:layout_height="44dp"
+        android:backgroundTint="#B5B3B3"
+        android:ems="10"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:text="@string/especie"
+        android:textAllCaps="false"
+        android:textColor="#686767"
+        android:textColorLink="#F85F6A"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/txtRaza"
+        android:layout_width="113dp"
+        android:layout_height="18dp"
+        android:text="@string/raza"
+        android:textColor="@color/rosaPrincipal"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.465" />
+
+    <TextView
+        android:id="@+id/raza"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="288dp"
+        android:layout_height="44dp"
+        android:backgroundTint="#B5B3B3"
+        android:ems="10"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:text="@string/raza"
+        android:textAllCaps="false"
+        android:textColor="#686767"
+        android:textColorLink="#F85F6A"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+    android:id="@+id/bntRegresar"
+    android:layout_width="288dp"
+    android:layout_height="57dp"
+    android:backgroundTint="@color/rosaPrincipal"
+    android:onClick="btnRegresar"
+    android:text="@string/regresar"
+    android:textAllCaps="false"
+    android:textColor="@color/white"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.495"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.931" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

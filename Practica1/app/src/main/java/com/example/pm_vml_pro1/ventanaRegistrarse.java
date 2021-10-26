@@ -35,7 +35,7 @@ public class ventanaRegistrarse extends AppCompatActivity {
     public void goRegistrarse(View view) {
         checked = (CheckBox) findViewById(R.id.checkTerminos);
         EditText correo = (EditText) findViewById(R.id.correo), contra = findViewById(R.id.contra);
-        EditText nombre = (EditText) findViewById(R.id.correo);
+        EditText nombre = (EditText) findViewById(R.id.nombre);
         if(correo.getText().toString().isEmpty() || contra.getText().toString().isEmpty() || nombre.getText().toString().isEmpty()){
             Toast.makeText(this, "Falta llenar campos", Toast.LENGTH_LONG).show();
         }else if(!checked.isChecked()){ //todos los campos estan llenos, pero no acepto terminos

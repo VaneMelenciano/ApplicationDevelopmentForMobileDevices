@@ -1,71 +1,133 @@
 package com.example.pm_vml_pro1;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link reportes#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class reportes extends Fragment {
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    ListView lista;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import java.util.ArrayList;
 
-    public reportes() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment reportes.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static reportes newInstance(String param1, String param2) {
-        reportes fragment = new reportes();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class reportes extends AppCompatActivity {
+    private ListView list;
+    private ArrayList<String> mascotasServidor;
+    private ArrayList<Integer> mascotasID;
+    RequestQueue colaSolicitudes;
+    ProgressDialog progressDialog;
+    JSONArray mascotas;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reportes);
+        colaSolicitudes = Volley.newRequestQueue(this);
+        list = (ListView) findViewById(R.id.listaMascotas);
+        //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_LONG).show();
+        mascotasServidor = new ArrayList();
+        mascotasID = new ArrayList();
+        /*progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Macotas");
+        progressDialog.setMessage("Conectando....");*/
+        getGet();
 
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        //Toast.makeText(this, "HOLA", Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    private void getGet(){
+        //progressDialog.show();
+        String url = "http://148.204.142.251/isc/api/v1/mascota.php?accion=read";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() { //GET para obtener recursos
 
-                             Bundle savedInstanceState) {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //progressDialog.dismiss();
+                        JSONObject respuesta = response;
+                        try {
+                            //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_LONG).show();
+                            int estado = respuesta.getInt("estado");
+                            String mensaje = respuesta.getString("mensaje");
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reportes, container, false);
+                            if(estado==1){ //si hay registros
+                                //Toast.makeText(getApplicationContext(), "5", Toast.LENGTH_LONG).show();
+                                mascotas =  respuesta.getJSONArray("mascotas");
+
+                                for(int i=0; i< mascotas.length(); i++){
+                                    JSONObject mascota = mascotas.getJSONObject(i);
+                                    //Toast.makeText(getApplicationContext(),"rrr", Toast.LENGTH_LONG).show();
+
+                                    mascotasServidor.add(mascota.getString("alias"));
+                                    mascotasID.add(Integer.valueOf(mascota.getString("id")));
+                                    //Toast.makeText(getApplicationContext(), mascota.getString("alias"), Toast.LENGTH_LONG).show();
+                                }
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, mascotasServidor);
+                                list.setAdapter(adapter);
+                            }else{
+                                Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //Toast.makeText(getApplicationContext(), "Todo un exito la solicitud", Toast.LENGTH_LONG).show();
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //progressDialog.dismiss();
+                        // TODO: Handle error
+                        Toast.makeText(getApplicationContext(), "Existe el siguiente error: " + error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+        colaSolicitudes.add(jsonObjectRequest);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                int idM = mascotasID.get(position);
+                Toast.makeText(reportes.this, "Has pulsado: "+ mascotasServidor.get(position) + "   " + position+"   " +idM, Toast.LENGTH_LONG).show();
+
+                try {
+                    JSONObject mascota = mascotas.getJSONObject(position);
+                    //Toast.makeText(reportes.this, mascota.getString("alias") + mascota.getString("especie"), Toast.LENGTH_LONG).show();
+                    goDetalle(mascota.getString("alias"), mascota.getString("especie"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                //Toast.makeText(reportes.this, idM, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void goDetalle(String alias, String especie){
+        Toast.makeText(reportes.this, alias + "  " + especie , Toast.LENGTH_LONG).show();
+        Intent i1 = new Intent(this, detalles.class);
+        i1.putExtra("alias", alias);
+        i1.putExtra("especie", especie);
+        //i1.putExtra("raza", raza);
+        startActivity(i1);
+    }
+
+
+    public void btnRegresar(View view) {
+        Intent i1 = new Intent(this, ventanaInicial.class);
+        startActivity(i1);
     }
 }

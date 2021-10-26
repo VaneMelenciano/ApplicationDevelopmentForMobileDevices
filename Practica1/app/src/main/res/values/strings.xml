@@ -26,6 +26,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="alias">Alias</string>
+    <string name="especie">Especie</string>
+    <string name="raza">Raza</string>
+    <string name="regresar">Regresar</string>
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>

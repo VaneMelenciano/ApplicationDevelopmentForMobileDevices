@@ -10,11 +10,11 @@
         android:name="com.example.pm_vml_pro1.ui.home.HomeFragment"
         android:label="@string/inicio"
         tools:layout="@layout/fragment_home" />
-
-
-    <fragment
+    <activity
         android:id="@+id/nav_reportes"
         android:name="com.example.pm_vml_pro1.reportes"
-        android:label="@string/listado"
-        tools:layout="@layout/fragment_reportes" />
+        android:label="activity_reportes"
+        tools:layout="@layout/activity_reportes" />
+
+
 </navigation>
