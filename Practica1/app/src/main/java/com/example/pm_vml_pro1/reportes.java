@@ -41,9 +41,9 @@ public class reportes extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_LONG).show();
         mascotasServidor = new ArrayList();
         //mascotasID = new ArrayList();
-        /*progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Macotas");
-        progressDialog.setMessage("Conectando....");*/
+        progressDialog.setMessage("Conectando....");
         getGet();
 
     }
@@ -51,14 +51,14 @@ public class reportes extends AppCompatActivity {
     @Override public void onBackPressed() { }
 
     private void getGet(){
-        //progressDialog.show();
+        progressDialog.show();
         String url = "http://148.204.142.251/isc/api/v1/mascota.php?accion=read";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() { //GET para obtener recursos
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        //progressDialog.dismiss();
+                        progressDialog.dismiss();
                         JSONObject respuesta = response;
                         try {
                             //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_LONG).show();
