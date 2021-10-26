@@ -14,14 +14,9 @@
         android:theme="@style/Theme.PM_VML_PRO1"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".detalles"
-            android:exported="true" />
-        <activity
-            android:name=".reportes"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,10 +25,12 @@
         </activity>
         <activity
             android:name=".ventanaRegistrarse"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ventanaInicial"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_ventana_inicial"
             android:theme="@style/Theme.PM_VML_PRO1.NoActionBar">
             <intent-filter>
@@ -42,6 +39,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".detalles"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".reportes"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

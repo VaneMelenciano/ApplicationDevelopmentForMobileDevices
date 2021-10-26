@@ -60,7 +60,7 @@ public class ventanaRegistrarse extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "El correo ya está registrado", Toast.LENGTH_LONG).show();
 
                             }else{ //no existe el correo, lo agrega
-                                Toast.makeText(getApplicationContext(), "No Existe ese correo", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(), "No Existe ese correo", Toast.LENGTH_LONG).show();
                                 JSONObject clienteJSON = new JSONObject();
                                 try {
                                     clienteJSON.put("nombre", nombre.getText());
@@ -74,7 +74,11 @@ public class ventanaRegistrarse extends AppCompatActivity {
 
                                             @Override
                                             public void onResponse(JSONObject respuesta) {
-                                                Toast.makeText(getApplicationContext(), "Respuesta del servidor:  " + respuesta, Toast.LENGTH_LONG).show();
+                                                try {
+                                                    Toast.makeText(getApplicationContext(), respuesta.getString("mensaje"), Toast.LENGTH_LONG).show();
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
                                                 mandarDatos(String.valueOf(nombre.getText()), String.valueOf(correo.getText()));
                                             }
                                         }, new Response.ErrorListener() {

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
                                     }
                                 } else { //no existe el registro
-                                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Correo no registrado", Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
