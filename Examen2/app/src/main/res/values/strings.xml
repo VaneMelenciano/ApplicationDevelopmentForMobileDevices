@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EXAMEN_II_VML</string>
+    <string name="apiKey">AIzaSyCnLu7Slo0zVkG_GHNpNngmKoq6CQIjmXI</string>
+    <string name="origen">Origen</string>
+    <string name="destino">Destino</string>
+    <string name="buscar">Buscar</string>
+    <string name="dirOrigen"></string>
+    <string name="dirDestino"></string>
+    <string name="distancia"></string>
+    <string name="tiempo"></string>
+</resources>
