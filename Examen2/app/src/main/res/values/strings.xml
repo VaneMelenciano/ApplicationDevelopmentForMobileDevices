@@ -6,6 +6,6 @@
     <string name="buscar">Buscar</string>
     <string name="dirOrigen"></string>
     <string name="dirDestino"></string>
-    <string name="distancia"></string>
+    <string name="distancia">Hola</string>
     <string name="tiempo"></string>
 </resources>
