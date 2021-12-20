@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setupMap(){
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -71,16 +70,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         btnDestino.setOnClickListener{
             starAutocomplete(TO_REQUEST_CODE)
         }
-
-        //dirDestino.text = "{getString(R.string.no_place_selected)}"
-        //dirDestino.text = "{getString(R.string.no_place_selected)}"
     }
     private fun starAutocomplete(requestCode: Int){
-        // Set the fields to specify which types of place data to
-        // return after the user has made a selection.
         val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS)
 
-        // Start the autocomplete intent.
         val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
             .build(this)
         startActivityForResult(intent, requestCode)
