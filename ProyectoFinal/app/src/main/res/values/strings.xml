@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProyectoFinal</string>
+    <string name="todos_usuarios">Todos los usuarios</string>
+    <string name="buscar_contacto">Buscar contacto</string>
+    <string name="titulo_1">¡HEY UPIIZ!</string>
+    <string name="leyenda">Mantener sesión iniciada</string>
+    <string name="nombreU">TextView</string>
+</resources>

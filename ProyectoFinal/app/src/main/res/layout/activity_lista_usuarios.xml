@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/black"
+    android:backgroundTint="@color/black"
+    android:orientation="vertical"
+    tools:context=".ListaUsuarios">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="5dp">
+
+        <Button
+            android:id="@+id/btn_notificacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2.5dp"
+            android:layout_weight="1"
+            android:text="Enviar notificacion"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btn_cs"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2.5dp"
+            android:text="Cerrar sesión"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:icon="@android:drawable/ic_menu_set_as"
+            app:iconTint="#FFFFFF" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="5dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/todos_usuarios"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="379dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/borde_redondo"
+        android:foregroundTint="@color/white" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="377dp"
+        android:layout_marginVertical="14dp"
+        android:layout_height="550dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/black"
+        android:foregroundTint="@color/black"
+        android:transitionGroup="false" />
+
+
+</LinearLayout>
